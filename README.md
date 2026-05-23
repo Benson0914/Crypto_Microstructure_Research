@@ -17,6 +17,7 @@ Rather than relying on global correlations, the research focuses on conditional 
 # **3. Data**
 |  | Research Data Set  | Testing Data Set |
 | -------- | ------------- | ------------- |
+| File | BTCUSDT_log_longhour.csv | BTCUSDT_orderbook_v2.csv |
 | Exchange | Binance | Binance |
 | Asset | BTCUSDT Perpetual | BTCUSDT Perpetual |
 | Frequency | 5-second order book snapshots | 5-second order book snapshots |
@@ -50,12 +51,7 @@ Rolling autocorrelation was used to estimate short-horizon persistence of imbala
 No need complicated formula here.
 
 # **5. Methodology**
-
-This section makes it feel research-level.
-
-Structure it clearly.
-
-# **Regime Segmentation**
+## **Regime Segmentation**
 
 The imbalance signal was discretized into five conditional regimes:
 
@@ -83,91 +79,69 @@ The following statistical methods were applied:
 
 # **6. Key Findings**
 
-THIS is the most important section.
-
-Put charts here.
-
-Use image markdown normally.
-
-# **Example**
-
 ## Conditional Return Structure
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
 
 Extreme imbalance states showed monotonic directional drift in future short-horizon returns.
 
-Then insert chart.
-
-Then:
+![alt text](Figures/Regime_Analysis.png "Regime_Analysis")
+![alt text](Figures/Regime_Transition_Matrix.png "Regime_Transition_Matrix")
 
 ## Volatility vs Persistence
 
 Volatility spikes were associated with collapsing autocorrelation and reduced market memory.
 
-Then scatter chart.
-
-Then:
+![alt text](Figures/Volatility_Order_Book.png "Volatility_Order_Book")
 
 ## Alpha Decay
 
 Signal persistence decayed significantly after approximately 20 seconds.
 
-Then decay chart.
+![alt text](Figures/Signal_Decay.png "Signal_Decay")
+
+## Streak Duartion
+Distribution of Streak Durations within 12 seconds when Imbalance Score > 0.6
+
+![alt text](Figures/Streak_Durations.png "Streak_Durations")
+
 
 # **7. Statistical Results**
-
-Short and clean.
-
-# **Example**
 
 ## Statistical Validation
 
 ### Wilcoxon Signed-Rank Test
+#### DIRECTIONAL CONSISTENCY TEST (Wilcoxon Rank)
 
-P-value:
-
-\[
-
-4.73 \times 10^{-11}
-
-\]
+- P-Value: 0.00000000010372765054
 
 Result:
-
-The directional drift is statistically significant and unlikely to be caused by random sampling noise.
+- STATISTICALLY SIGNIFICANT. The upward drift is a consistent market reality. (Not is random signal)
 
 ### Mutual Information
-
-- Imbalance → Future Return: 0.0742
-- Volatility → Future Return: 0.2872
+- Imbalance →  Future Return Information Link:  0.0759
+- Volatility → Future Return Information Link: 0.3024
 
 # **8. Backtest & Execution Reality**
-
-THIS is your strongest section psychologically.
-
-Because it shows maturity.
 
 ## Trading Feasibility
 
 Although statistically significant directional structure was detected, the strategy failed after realistic transaction costs.
 
-### Results
+### 📊Results
 
-- Gross PnL: +6.18%
-- Net PnL After Fees: -94.26%
-- Profitability Probability (Bootstrap): 0.00%
+||BACKTEST RESULTS|
+|--------------|------|
+|Total Trades Triggered| 2511
+|Win Rate (Post-Fee)|    2.19%|
+|Gross PnL (No Fees)|    6.1804%|
+|Net PnL (After Fees)|    -94.2596%|
+|Profitability Probability (Bootstrap)| 0.00%|
 
-This demonstrates an important microstructure reality:
+![alt text](Figures/Bootstrap.png "Bootstrap")
 
-*> Statistical predictability does not necessarily imply executable alpha after fees and turnover.*
+** > Statistical predictability does not necessarily imply executable alpha after fees and turnover. **
 
-This is VERY GOOD.
 
 # **9. Limitations**
-
-Very important.
-
-Makes you sound intelligent.
 
 ## Limitations
 
@@ -179,8 +153,6 @@ Makes you sound intelligent.
 - No cross-exchange liquidity analysis
 
 # **10. Future Work**
-
-Short section.
 
 ## Future Work
 
